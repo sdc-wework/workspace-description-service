@@ -2,6 +2,8 @@ const https = require('https');
 const path = require('path');
 const fs = require('fs');
 
+const { WorkspaceDescription, Photo } = require('./index.js');
+
 const randomIntBetween = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 const capitalize = string => string.charAt(0).toUpperCase() + string.slice(1);
 
@@ -50,7 +52,7 @@ const generateData = async () => {
     const trimmedParagraph = sentences.join('. ') + '.';
 
     const workspace = {
-      id: i,
+      _id: i,
       name: name,
       url: url,
       descriptionHeadline: headline,
@@ -66,9 +68,9 @@ const generateData = async () => {
       const description = words[randomIntBetween(0, words.length - 1)];
 
       const image = {
-        id: lastPhotoId,
+        _id: lastPhotoId,
         workspaceId: i,
-        url: `/api/photos/${lastPhotoId}`,
+        url: `https://picsum.photos/id/${lastPhotoId}.webp`,
         description: capitalize(description),
       };
 
@@ -76,7 +78,15 @@ const generateData = async () => {
     }
   }
 
-  console.log(images);
+  await Photo.deleteMany({});
+  await WorkspaceDescription.deleteMany({});
+
+  const photos = await Photo.create(images);
+  const workspaceDescriptions = await WorkspaceDescription.create(workspaces);
+
+  console.log(`Generated:\n${photos.length} photos\n${workspaceDescriptions.length} workspace descriptions`);
+
+  process.exit();
 };
 
 generateData();
