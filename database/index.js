@@ -1,4 +1,4 @@
-require('./init.js');
+require('dotenv').config({ path: '../.env' });
 const mongoose = require('mongoose');
 
 const mongo = process.env.DATABASE_URL ? process.env.DATABASE_URL : 'mongodb://localhost/spacework';
@@ -13,16 +13,7 @@ const workspaceDescriptionSchema = mongoose.Schema({
 });
 const WorkspaceDescription = mongoose.model('WorkspaceDescription', workspaceDescriptionSchema);
 
-const photoSchema = mongoose.Schema({
-  _id: Number,
-  workspaceId: Number,
-  description: String,
-  url: String,
-});
-const Photo = mongoose.model('Photo', photoSchema);
-
 module.exports = {
   WorkspaceDescription,
-  Photo,
 };
 
