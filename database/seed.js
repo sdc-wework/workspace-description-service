@@ -50,7 +50,7 @@ const generateData = async () => {
     const trimmedParagraph = sentences.join('. ') + '.';
 
     const workspace = {
-      _id: i + 1,
+      id: i + 1,
       name: name,
       url: url,
       descriptionHeadline: headline,
