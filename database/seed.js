@@ -43,11 +43,13 @@ const generateData = async () => {
   for (let i = 0; i < data.length; i++) {
     const paragraph = data[i].replace(/\s+/g, ' ');
     const sentences = paragraph.split('. ');
+    const nameLength = randomIntBetween(4, 7);
+    const headlineLength = randomIntBetween(4, 7);
 
-    const name = sentences.pop().slice(0, -1);
-    const url = name.toLowerCase().replace(/[,.?'"]/g, '').split(' ').join('-');
-    const headline = sentences.pop();
-    const trimmedParagraph = sentences.join('. ') + '.';
+    const name = sentences[0].slice(0, -1).split(' ').slice(0, nameLength).join(' ').replace(/[,.?'"]/g, '');
+    const url = name.toLowerCase().split(' ').join('-');
+    const headline = sentences[1].split(' ').slice(0, nameLength).join(' ').replace(/[,.?'"]/g, '');
+    const trimmedParagraph = sentences.join('. ');
 
     const workspace = {
       id: i + 1,

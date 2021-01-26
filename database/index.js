@@ -1,5 +1,7 @@
-require('dotenv').config({ path: '../.env' });
+const path = require('path');
 const mongoose = require('mongoose');
+
+require('dotenv').config({ path: path.join(__dirname, '../.env') });
 
 const mongo = process.env.DATABASE_URL ? process.env.DATABASE_URL : 'mongodb://localhost/spacework';
 mongoose.connect(mongo, { useUnifiedTopology: true, useNewUrlParser: true });
@@ -29,6 +31,7 @@ const saveWorkspaceDescription = async data => {
 };
 
 module.exports = {
+  mongoose,
   WorkspaceDescription,
   getAllWorkspaceDescriptions,
   getWorkspaceDescriptionById,
