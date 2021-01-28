@@ -49,14 +49,14 @@ const generateData = async () => {
     const name = sentences[0].slice(0, -1).split(' ').slice(0, nameLength).join(' ').replace(/[,.?'"]/g, '');
     const url = name.toLowerCase().split(' ').join('-');
     const headline = sentences[1].split(' ').slice(0, nameLength).join(' ').replace(/[,.?'"]/g, '');
-    const trimmedParagraph = sentences.join('. ');
+    const description = sentences.concat(sentences).join('. ');
 
     const workspace = {
       id: i + 1,
       name: name,
       url: url,
       descriptionHeadline: headline,
-      description: trimmedParagraph,
+      description: description,
     };
 
     workspaces.push(workspace);

@@ -1,0 +1,25 @@
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+  html {
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #000;
+    font-family: Roboto, sans-serif;
+    font-size: 62.5%;
+    line-height: 1.375;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  body {
+    font-size: 1.6rem;
+    margin: 0;
+  }
+`;
+
+export default GlobalStyle;
