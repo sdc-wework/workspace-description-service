@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import GlobalStyles from '../globalStyles.js';
+import { useParams } from 'react-router-dom';
 import {
   Link,
   A,
   H2,
   P,
 } from './styles.js';
-import { useParams } from 'react-router-dom';
 
 const WorkspaceDescription = () => {
   const { workspaceId } = useParams();
@@ -17,7 +17,7 @@ const WorkspaceDescription = () => {
   const handleShowMore = () => setShowMore(true);
 
   useEffect(() => {
-    fetch(`/api/workspace-description/${workspaceId}`)
+    fetch(`http://localhost:6060/api/workspace-description/${workspaceId}`)
       .then(res => res.json())
       .then(data => {
         setHeadline(data.descriptionHeadline);
