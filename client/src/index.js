@@ -7,6 +7,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 import WorkspaceDescription from './components/workspace-description';
+import WorkspaceHeader from './components/workspace-header';
 
 ReactDOM.render(
   <Router>
@@ -20,4 +21,18 @@ ReactDOM.render(
     </Switch>
   </Router>,
   document.getElementById('workspace-description'),
+);
+
+ReactDOM.render(
+  <Router>
+    <Switch>
+      <Route exact path="/">
+        <Redirect to="/buildings/1" />
+      </Route>
+      <Route path="/buildings/:workspaceId">
+        <WorkspaceHeader />
+      </Route>
+    </Switch>
+  </Router>,
+  document.getElementById('workspace-header'),
 );
