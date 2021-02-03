@@ -16,10 +16,23 @@ ReactDOM.render(
         <Redirect to="/buildings/1" />
       </Route>
       <Route path="/buildings/:workspaceId">
-        <WorkspaceHeader />
         <WorkspaceDescription />
       </Route>
     </Switch>
   </Router>,
   document.getElementById('workspace-description'),
+);
+
+ReactDOM.render(
+  <Router>
+    <Switch>
+      <Route exact path="/">
+        <Redirect to="/buildings/1" />
+      </Route>
+      <Route path="/buildings/:workspaceId">
+        <WorkspaceHeader />
+      </Route>
+    </Switch>
+  </Router>,
+  document.getElementById('workspace-header'),
 );
