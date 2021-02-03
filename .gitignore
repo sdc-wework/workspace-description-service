@@ -10,5 +10,5 @@ package-lock.json
 .env
 
 # Build files
-dist
+dist/*
 !dist/index.html
