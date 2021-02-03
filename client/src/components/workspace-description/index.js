@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import GlobalStyles from '../globalStyles.js';
-import { Link } from './styles.js';
 import { useParams } from 'react-router-dom';
+import {
+  Link,
+  A,
+  H2,
+  P,
+} from './styles.js';
 
 const WorkspaceDescription = () => {
   const { workspaceId } = useParams();
@@ -12,7 +17,7 @@ const WorkspaceDescription = () => {
   const handleShowMore = () => setShowMore(true);
 
   useEffect(() => {
-    fetch(`/api/workspace-description/${workspaceId}`)
+    fetch(`http://localhost:6060/api/workspace-description/${workspaceId}`)
       .then(res => res.json())
       .then(data => {
         setHeadline(data.descriptionHeadline);
@@ -21,20 +26,20 @@ const WorkspaceDescription = () => {
   }, []);
 
   let descriptionMarkup = (
-    <p>
-      {description.slice(0, 397)} ... <Link onClick={handleShowMore}>Read More</Link>
-    </p>
+    <P>
+      {description.slice(0, 397)} ... <A onClick={handleShowMore}>Read More</A>
+    </P>
   );
 
   if (showMore) {
-    descriptionMarkup = <p>{description}</p>
+    descriptionMarkup = <P>{description}</P>
   }
 
   if (headline.length && description.length) {
     return (
       <div>
         <GlobalStyles />
-        <h2>{headline}</h2>
+        <H2>{headline}</H2>
         {descriptionMarkup}
       </div>
     );

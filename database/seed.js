@@ -43,7 +43,7 @@ const generateData = async () => {
   for (let i = 0; i < data.length; i++) {
     const paragraph = data[i].replace(/\s+/g, ' ');
     const sentences = paragraph.split('. ');
-    const nameLength = randomIntBetween(4, 7);
+    const nameLength = randomIntBetween(1, 2);
     const headlineLength = randomIntBetween(4, 7);
 
     const name = sentences[0].slice(0, -1).split(' ').slice(0, nameLength).join(' ').replace(/[,.?'"]/g, '');
