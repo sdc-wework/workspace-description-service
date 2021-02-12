@@ -14,13 +14,13 @@ const WorkspaceHeader = () => {
   const [city, setCity] = useState('');
 
   useEffect(() => {
-    fetch(`http://localhost:5001/api/nearbyworkspaces/address/${workspaceId}`)
+    fetch(`/api/nearbyworkspaces/address/${workspaceId}`)
       .then(res => res.json())
       .then(data => {
         setStreet(`${data.streetNumber} ${data.streetName}`);
         setCity(`${data.city}, ${data.state} ${data.zipcode}`);
       });
-    fetch(`http://localhost:6060/api/workspace-description/${workspaceId}`)
+    fetch(`/api/workspace-description/${workspaceId}`)
       .then(res => res.json())
       .then(data => {
         setTitle(data.name);

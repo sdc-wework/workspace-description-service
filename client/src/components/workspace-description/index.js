@@ -17,7 +17,7 @@ const WorkspaceDescription = () => {
   const handleShowMore = () => setShowMore(true);
 
   useEffect(() => {
-    fetch(`http://localhost:6060/api/workspace-description/${workspaceId}`)
+    fetch(`/api/workspace-description/${workspaceId}`)
       .then(res => res.json())
       .then(data => {
         setHeadline(data.descriptionHeadline);
