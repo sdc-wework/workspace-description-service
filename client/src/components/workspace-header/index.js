@@ -14,7 +14,7 @@ const WorkspaceHeader = () => {
   const [city, setCity] = useState('');
 
   useEffect(() => {
-    fetch(`/api/nearbyworkspaces/address/${workspaceId}`)
+    fetch(`http://ec2-54-177-170-134.us-west-1.compute.amazonaws.com:5001/api/nearbyworkspaces/address/${workspaceId}`)
       .then(res => res.json())
       .then(data => {
         setStreet(`${data.streetNumber} ${data.streetName}`);
