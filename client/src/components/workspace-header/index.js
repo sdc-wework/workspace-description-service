@@ -27,17 +27,13 @@ const WorkspaceHeader = () => {
       });
   }, []);
 
-  if (title.length && street.length && city.length) {
-    return (
-      <Header>
-        <GlobalStyles />
-        <H1>{title}</H1>
-        <Mono>{street}<br/>{city}</Mono>
-      </Header>
-    );
-  } else {
-    return <></>;
-  }
+  return (
+    <Header>
+      <GlobalStyles />
+      <H1>{title}</H1>
+      <Mono>{street}<br/>{city}</Mono>
+    </Header>
+  );
 };
 
 export default WorkspaceHeader;
