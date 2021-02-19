@@ -8,6 +8,7 @@ export const Header = styled.div`
 
 export const H1 = styled.h1`
   font-size: 64px;
+  font-weight: 700;
 `;
 
 export const Mono = styled.span`

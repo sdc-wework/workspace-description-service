@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import GlobalStyles from '../globalStyles.js';
 import { useParams } from 'react-router-dom';
 import {
-  Link,
   A,
   H2,
   P,
@@ -35,17 +34,13 @@ const WorkspaceDescription = () => {
     descriptionMarkup = <P>{description}</P>
   }
 
-  if (headline.length && description.length) {
-    return (
-      <div>
-        <GlobalStyles />
-        <H2>{headline}</H2>
-        {descriptionMarkup}
-      </div>
-    );
-  } else {
-    return <></>;
-  }
+  return (
+    <div>
+      <GlobalStyles />
+      <H2>{headline}</H2>
+      {descriptionMarkup}
+    </div>
+  );
 };
 
 export default WorkspaceDescription;
