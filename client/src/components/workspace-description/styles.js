@@ -7,6 +7,7 @@ export const A = styled.a`
 
 export const H2 = styled.h2`
   font-size: 2rem;
+  font-weight: 700;
   margin-bottom: 1rem;
 `;
 
