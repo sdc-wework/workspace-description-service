@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
 
 const mongo = process.env.DATABASE_URL ? process.env.DATABASE_URL : 'mongodb://localhost/spacework';
-mongoose.connect(mongo, { useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connect(mongo, { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false });
 
 const workspaceDescriptionSchema = mongoose.Schema({
   id: Number,
@@ -19,16 +19,24 @@ const getAllWorkspaceDescriptions = async () => await WorkspaceDescription.find(
 
 const getWorkspaceDescriptionById = async id => await WorkspaceDescription.findOne({ id });
 
-const createUniqueWorkspaceDescription = async data => {
+const createUniqueWorkspaceDescription = async (data) => {
   const existing = await WorkspaceDescription.find(data).exec();
   if (existing === null | existing.length === 0) {
     return await model.create(data);
   }
 };
 
-const saveWorkspaceDescription = async data => {
+const saveWorkspaceDescription = async (data) => {
   return await createUniqueWorkspaceDescription(data);
 };
+
+const updateWorkspaceDescription = async (id, update) => {
+  return await WorkspaceDescription.findOneAndUpdate({id: id}, {descriptionHeadline: update}, {new: true});
+}
+
+const deleteWorkspaceDescription = async (id) => {
+  return await WorkspaceDescription.findOneAndDelete({id: id})
+}
 
 module.exports = {
   mongoose,
@@ -36,5 +44,7 @@ module.exports = {
   getAllWorkspaceDescriptions,
   getWorkspaceDescriptionById,
   saveWorkspaceDescription,
+  updateWorkspaceDescription,
+  deleteWorkspaceDescription
 };
 

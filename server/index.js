@@ -26,6 +26,31 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
+app.post('/api/add', async (req, res) => {
+  let body = new db.WorkspaceDescription(req.body)
+  const workspace = {
+    id: body.id,
+    name: body.name,
+    url: body.url,
+    descriptionHeadline: body.descriptionHeadline,
+    description: body.description,
+  };
+  const desc = await db.WorkspaceDescription.create(workspace)
+  res.json(desc);
+})
+
+app.patch('/api/update', async (req, res) => {
+  const {id, descriptionHeadline} = req.body
+  let update = await db.updateWorkspaceDescription(id, descriptionHeadline);
+  res.json(update);
+})
+
+app.delete('/api/delete/:id', async (req, res) => {
+  const { id } = req.params;
+  let deleted = await db.deleteWorkspaceDescription(id);
+  res.json(deleted);
+})
+
 const port = process.env.PORT ? process.env.PORT : 6060;
 
 app.listen(port, () => {
