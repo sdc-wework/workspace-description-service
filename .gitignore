@@ -9,6 +9,7 @@ package-lock.json
 # Secrets
 .env
 config.js
+newrelic.js
 
 # Build files
 dist/*
