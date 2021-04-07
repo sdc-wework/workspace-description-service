@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  workspacedescriptionservice:
+    image: workspacedescriptionservice
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: development
+    ports:
+      - 6060:6060
+      - 9229:9229
+    command: ["node", "--inspect=0.0.0.0:9229", "index.js"]
