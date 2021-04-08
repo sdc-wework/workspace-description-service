@@ -51,32 +51,64 @@ app.get('/api/workspace-description/:id', async (req, res) => {
 
 
 
-app.post('api/workspace-description/', async (req, res) => {
+app.post('/api/workspace-description', async (req, res) => {
   try {
-    const result = await pool.query(`INSERT INTO workspacedescriptions(id,name,url,descriptionheadline,description,ownerId) VALUES($1,$2,$3,$4,$5,$6) RETURNING *`);
-    res.json(result)
+    const { id, name, url, descriptionheadline, description, ownerId } = req.body;
+    const result = await pool.query(`INSERT INTO workspacedescriptions(id,name,url,descriptionheadline,description,ownerId) VALUES($1,$2,$3,$4,$5,$6) RETURNING *`, [id, name, url, descriptionheadline, description, ownerId]);
+    res.json(result);
   } catch(err) {
     console.error(err.message);
   }
 });
 
-app.post('api/owner/', async (req, res) => {
+app.post('/api/owner', async (req, res) => {
   try {
-    const result = await pool.query(`INSERT INTO owners(id,firstName,lastName) VALUES($1,$2,$3) RETURNING *`);
-    res.json(result)
+    const { id, firstName, lastName } = req.body;
+    const result = await pool.query(`INSERT INTO owners(id,firstName,lastName) VALUES($1,$2,$3) RETURNING *`, [id, firstName, lastName]);
+    res.json(result);
   } catch(err) {
     console.error(err.message);
   }
 });
 
-app.post('api/photo/', async (req, res) => {
+app.post('/api/photo/', async (req, res) => {
   try {
-    const result = await pool.query(`INSERT INTO owners(id,url,workspaceid) VALUES($1,$2,$3) RETURNING *`);
-    res.json(result)
+    let { id, url, workspaceid } = req.body;
+    const result = await pool.query(`INSERT INTO photos(id,url,workspaceid) VALUES($1,$2,$3) RETURNING *`, [id, url, workspaceid]);
+    res.json(result);
   } catch(err) {
     console.error(err.message);
   }
 });
+
+app.put('/api/workspace-description/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, url, descriptionheadline, description, ownerId } = req.body;
+    const result = await pool.query(`UPDATE workspacedescriptions SET name = $2, url = $3, descriptionheadline = $4, description = $5, ownerid = $6 WHERE id = $1`, [id, name, url, descriptionheadline, description, ownerId]);
+    res.json(result);
+  } catch(err) {
+    console.error(err.message);
+  }
+});
+
+app.delete('api/workspace-description/:id', async (req, res) => {
+  try{
+    const { id } = req.params;
+    const result = await pool.query(`DELETE FROM workspacedescriptions WHERE id = $1`, [id]);
+    res.json(result);
+  } catch(err) {
+    console.error(err.message);
+  }
+})
+
+// UPDATE workspacedescriptions
+// SET name='Undying Teenage Love',
+// url='undying-teenage-love',
+// descriptionheadline='libero iure ducimus',
+// description='sequi sunt nisi maiores maiores corrupti quia eos non impedit est velit ab nobis culpa voluptatem suscipit voluptate enim possimus quod blanditiis facere earum nostrum ea ut nesciunt sequi quae deleniti consequatur quia vitae et',
+// ownerid=1
+// WHERE id=1;
 
 // app.post()
 

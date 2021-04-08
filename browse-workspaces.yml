@@ -1,0 +1,15 @@
+config:
+  target: "http://localhost:6060"
+  phases:
+    - duration: 600
+      arrivalRate: 250
+      name: Test
+  payload:
+    path: "artillery.csv"
+    fields:
+      - "id"
+scenarios:
+  - name: "Browse workspaces"
+    flow:
+      - get:
+          url: "/api/advanced/{{ id }}"
