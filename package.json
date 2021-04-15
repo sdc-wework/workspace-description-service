@@ -15,7 +15,10 @@
     "server": "node server/server.js",
     "server:dev": "nodemon server/server.js",
     "test": "cd test && jest",
-    "seedowners": "node pgseed/seedOwners.js && node copyOwners.js"
+    "seedowners": "node seed/seedOwnersCSV.js && node seed/copyOwners.js",
+    "seedworkspaces": "node seed/seedWorkspacesCSV.js && node seed/copyWorkspaces.js",
+    "seedphotos": "node seed/seedPhotosCSV.js && node seed/copyPhotos.js",
+    "seedall": "npm run seedowners && npm run seedworkspaces && npm run seedphotos"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.5.0",
