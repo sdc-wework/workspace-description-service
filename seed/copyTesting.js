@@ -8,7 +8,7 @@ const pool = new Pool({
   port: 5432
 });
 
-const pgQuery = "COPY workspacedescriptions(id, name, url, descriptionheadline, description, ownerId) FROM '" + __dirname + "/seedWorkspaces.csv' DELIMITER ',' CSV HEADER";
+const pgQuery = "COPY testing(id, firstName, lastName) FROM '" + __dirname + "/seedTesting.csv' DELIMITER ',' CSV HEADER";
 
 pool.query(pgQuery, (err, result) => {
   if (err) {

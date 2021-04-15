@@ -2,7 +2,7 @@ const faker = require('faker');
 const fs = require('fs');
 const args = require('minimist')(process.argv.slice(2));
 
-const output = './seedWorkspaces.csv';
+const output = __dirname + '/seedWorkspaces.csv';
 
 // Create some fake data using the faker lib. Returns a template string to be inserted into a csv file as a single line
 function createEntry(i) {

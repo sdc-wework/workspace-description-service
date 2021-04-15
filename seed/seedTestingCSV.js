@@ -1,7 +1,7 @@
 const faker = require('faker');
 const fs = require('fs');
 
-const output = __dirname + '/seedOwners.csv';
+const output = __dirname + '/seedTesting.csv';
 
 function createOwner(i) {
   const id = i + 1;
@@ -13,7 +13,7 @@ function createOwner(i) {
 const stream = fs.createWriteStream(output);
 
 async function writeToCsvFile() {
-  const rows = 1365476;
+  const rows = 136;
   stream.write('id,firstName,lastName\n');
   for (let i = 0; i < rows; i++) {
     stream.write(createOwner(i), 'utf-8');
