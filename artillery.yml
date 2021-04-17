@@ -1,7 +1,7 @@
 config:
   target: "http://localhost:6060"
   phases:
-    - duration: 300
+    - duration: 600
       arrivalRate: 250
       name: 250rps
   payload:
