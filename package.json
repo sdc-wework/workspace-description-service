@@ -13,12 +13,8 @@
     "start": "npx webpack --watch --mode development",
     "build": "npx webpack --mode production",
     "server": "node server/server.js",
-    "server:dev": "nodemon server/server.js",
-    "test": "cd test && jest",
-    "seedowners": "node seed/seedOwnersCSV.js && node seed/copyOwners.js",
-    "seedworkspaces": "node seed/seedWorkspacesCSV.js && node seed/copyWorkspaces.js",
-    "seedphotos": "node seed/seedPhotosCSV.js && node seed/copyPhotos.js",
-    "seedall": "npm run seedowners && npm run seedworkspaces && npm run seedphotos"
+    "server:dev": "nodemon server/index.js",
+    "test": "cd test && jest"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.5.0",

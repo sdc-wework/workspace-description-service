@@ -21,4 +21,4 @@ CREATE TABLE photos(
   id INTEGER PRIMARY KEY,
   url VARCHAR(200),
   workspaceId INTEGER REFERENCES workspacedescriptions(id)
-)
+);

@@ -4,18 +4,12 @@ const path = require('path');
 const cors = require('cors');
 const pool = require('../database/db.js');
 
-console.log(pool)
-
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-// app.use(express.static(path.join(__dirname, '../client/dist')));
-
-app.get('/', (req, res) => {
-  res.send('Everything is connected!');
-});
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.get('/api/advanced/:id', async (req, res) => {
   try {
@@ -49,7 +43,9 @@ app.get('/api/workspace-description/:id', async (req, res) => {
   }
 });
 
-
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+});
 
 app.post('/api/workspace-description', async (req, res) => {
   try {
