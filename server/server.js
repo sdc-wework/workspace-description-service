@@ -43,6 +43,10 @@ app.get('/api/workspace-description/:id', async (req, res) => {
   }
 });
 
+app.get('/loaderio-8f03b65567c2499fe007fcdd161d1c50/', (req, res) => {
+  res.json('loaderio-8f03b65567c2499fe007fcdd161d1c50');
+})
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
