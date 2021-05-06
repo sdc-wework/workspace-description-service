@@ -36,8 +36,9 @@ app.get('/api/advanced/:id', async (req, res) => {
 app.get('/api/workspace-description/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const result = await pool.query(`SELECT * FROM workspacedescriptions WHERE id = ${id}`);
-    res.json(result.rows);
+    const result = await pool.query(`SELECT id, name, url, descriptionHeadline, description FROM workspacedescriptions WHERE id = ${id}`);
+    console.log(result.rows)
+    res.json(result.rows[0]);
   } catch(err) {
     console.error(err.message);
   }

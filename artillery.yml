@@ -1,9 +1,9 @@
 config:
-  target: "http://localhost:6060"
+  target: "http://3.139.186.169:6060"
   phases:
-    - duration: 600
-      arrivalRate: 250
-      name: 250rps
+    - duration: 180
+      arrivalRate: 550
+      name: 550rps
   payload:
     path: "artillery.csv"
     fields:
@@ -12,4 +12,4 @@ scenarios:
   - name: "Browse workspaces"
     flow:
       - get:
-        url: "api/advanced/{{ id }}"
+          url: "/api/advanced/{{ id }}"

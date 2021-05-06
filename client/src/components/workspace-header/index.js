@@ -14,12 +14,14 @@ const WorkspaceHeader = () => {
   const [city, setCity] = useState('');
 
   useEffect(() => {
-    fetch(`http://ec2-54-177-170-134.us-west-1.compute.amazonaws.com:5001/api/nearbyworkspaces/address/${workspaceId}`)
-      .then(res => res.json())
-      .then(data => {
-        setStreet(`${data.streetNumber} ${data.streetName}`);
-        setCity(`${data.city}, ${data.state} ${data.zipcode}`);
-      });
+    //* May need to add this back in. Disabling to see if I can hook up proxy
+    //* I think this may be failing and then causing problems with the workspace description
+    // fetch(`http://ec2-54-177-170-134.us-west-1.compute.amazonaws.com:5001/api/nearbyworkspaces/address/${workspaceId}`)
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     setStreet(`${data.streetNumber} ${data.streetName}`);
+    //     setCity(`${data.city}, ${data.state} ${data.zipcode}`);
+    //   });
     fetch(`/api/workspace-description/${workspaceId}`)
       .then(res => res.json())
       .then(data => {

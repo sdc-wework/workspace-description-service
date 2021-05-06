@@ -13,7 +13,7 @@
     "start": "npx webpack --watch --mode development",
     "build": "npx webpack --mode production",
     "server": "node server/server.js",
-    "server:dev": "nodemon server/index.js",
+    "server:dev": "nodemon server/server.js",
     "test": "cd test && jest"
   },
   "dependencies": {
