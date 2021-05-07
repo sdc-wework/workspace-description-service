@@ -10,6 +10,7 @@ package-lock.json
 .env
 config.js
 newrelic.js
+newrelic_agent.log
 
 # Build files
 dist/*
