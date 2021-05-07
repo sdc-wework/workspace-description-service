@@ -44,8 +44,8 @@ app.get('/api/workspace-description/:id', async (req, res) => {
   }
 });
 
-app.get('/loaderio-8f03b65567c2499fe007fcdd161d1c50/', (req, res) => {
-  res.send('loaderio-8f03b65567c2499fe007fcdd161d1c50');
+app.get('/loaderio-469393fdeb8e63bc9bfc10100cb76b99/', (req, res) => {
+  res.send('loaderio-469393fdeb8e63bc9bfc10100cb76b99');
 })
 
 app.get('*', (req, res) => {
